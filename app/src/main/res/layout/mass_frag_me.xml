@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="4dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginBottom="4dp"
+    android:background="@color/colorPrimary">
+
+    <ImageView
+        android:id="@+id/send_people"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/ic_account_circle"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/message_root"
+        android:padding="4dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/send_people"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:background="@drawable/recive_background_message_for_me">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/send_text_time_message"
+            android:text="12:12 am"
+            android:gravity="start"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="bottom|end"
+            android:textSize="8dp"
+            android:textColor="@android:color/black"
+            />
+        <TextView
+            android:id="@+id/send_text_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hello ma'fucka"
+            android:gravity="start"
+            android:paddingBottom="8dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="4dp"
+            android:layout_gravity="start"
+            android:textSize="16sp"
+            android:maxWidth="256dp"
+            android:textColor="@android:color/black" />
+
+    </FrameLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

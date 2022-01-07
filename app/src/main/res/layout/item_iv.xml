@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginStart="8dp">
+
+    <ImageView
+        android:id="@+id/send_people"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/ic_account_circle"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <FrameLayout
+        android:id="@+id/message_root"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:background="@drawable/recive_background_message_for_me">
+
+
+        <ImageView
+            android:id="@+id/image_view_message_image"
+            android:layout_width="256dp"
+            android:layout_height="256dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="todo"
+            android:padding="4dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_image"
+            app:srcCompat="@drawable/ic_image"
+            />
+
+        <TextView
+            android:id="@+id/text_view_message_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="4dp"
+            android:textSize="12sp"
+            android:textColor="@android:color/black"
+            android:layout_gravity="start|bottom"
+            android:text="3/15/2020 3:05 PM"/>
+
+        <TextView
+            android:id="@+id/txt_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="160dp"
+            android:layout_marginBottom="4dp"
+            android:textSize="12sp"
+            android:textColor="@android:color/black"
+            android:layout_gravity="bottom"
+            android:text="text"/>
+
+
+
+    </FrameLayout>
+
+</FrameLayout>
