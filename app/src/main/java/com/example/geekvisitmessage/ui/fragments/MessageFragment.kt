@@ -17,12 +17,14 @@ import com.example.geekvisitmessage.R
 import com.example.geekvisitmessage.databinding.FragmentMessageBinding
 import com.example.geekvisitmessage.ui.adapter.ChatAdapter
 import com.example.geekvisitmessage.ui.adapter.ChatModel
+import com.vanniktech.emoji.EmojiPopup
 
 class MessageFragment() : Fragment() {
 
     private var _binding: FragmentMessageBinding? = null
     private val binding get() = _binding!!
     var image: String = ""
+    var isEmoji:Boolean = true
     private val chatAdapter = ChatAdapter(
     )
 
@@ -41,6 +43,26 @@ class MessageFragment() : Fragment() {
         sendMessage()
         initFields()
         sendVoice()
+        sendEmoji()
+    }
+
+    private fun sendEmoji() {
+        val popup = EmojiPopup.Builder.fromRootView(binding.root).build(binding.editInputMessage)
+
+        binding.emojiImage.setOnClickListener(View.OnClickListener {
+            popup.toggle()
+            val icon:Int
+            if (isEmoji){
+                isEmoji = false
+                icon = R.drawable.ic_keyboard
+            }else{
+                isEmoji = true
+                icon = R.drawable.ic_emoji
+            }
+            binding.emojiImage.setImageDrawable(
+                ContextCompat.getDrawable(context!!, icon));
+
+        })
     }
 
     private fun init() {
