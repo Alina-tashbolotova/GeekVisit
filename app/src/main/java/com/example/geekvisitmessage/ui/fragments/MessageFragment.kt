@@ -13,6 +13,7 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.example.geekvisitmessage.AppTextWatcher
 import com.example.geekvisitmessage.R
 import com.example.geekvisitmessage.databinding.FragmentMessageBinding
 import com.example.geekvisitmessage.ui.adapter.ChatAdapter
@@ -24,7 +25,7 @@ class MessageFragment() : Fragment() {
     private var _binding: FragmentMessageBinding? = null
     private val binding get() = _binding!!
     var image: String = ""
-    var isEmoji:Boolean = true
+    var isEmoji: Boolean = true
     private val chatAdapter = ChatAdapter(
     )
 
@@ -51,23 +52,24 @@ class MessageFragment() : Fragment() {
 
         binding.emojiImage.setOnClickListener(View.OnClickListener {
             popup.toggle()
-            val icon:Int
-            if (isEmoji){
+            val icon: Int
+            if (isEmoji) {
                 isEmoji = false
                 icon = R.drawable.ic_keyboard
-            }else{
+            } else {
                 isEmoji = true
                 icon = R.drawable.ic_emoji
             }
             binding.emojiImage.setImageDrawable(
-                ContextCompat.getDrawable(context!!, icon));
+                ContextCompat.getDrawable(context!!, icon)
+            );
 
         })
     }
 
-    private fun init() {
-        binding.recyclerMessage.adapter = chatAdapter
-        binding.recyclerMessage.layoutManager = LinearLayoutManager(context)
+    private fun init() = with(binding) {
+        recyclerMessage.adapter = chatAdapter
+        recyclerMessage.layoutManager = LinearLayoutManager(context)
     }
 
 
@@ -81,7 +83,21 @@ class MessageFragment() : Fragment() {
     }
 
     private fun initFields() = with(binding) {
-        editInputMessage.addTextChangedListener {
+//        editInputMessage.addTextChangedListener {
+//            val string = editInputMessage.text.toString()
+//            if (string.isEmpty() || string == "Запись") {
+//                imageSendMessage.visibility = View.GONE
+//                imagePhotoMessage.visibility = View.VISIBLE
+//                imageVoiceMessage.visibility = View.VISIBLE
+//                emojiImage.visibility = View.VISIBLE
+//            } else {
+//                imageSendMessage.visibility = View.VISIBLE
+//                imagePhotoMessage.visibility = View.GONE
+//                imageVoiceMessage.visibility = View.GONE
+//                emojiImage.visibility = View.VISIBLE
+//            }
+//        }
+        editInputMessage.addTextChangedListener(AppTextWatcher {
             val string = editInputMessage.text.toString()
             if (string.isEmpty() || string == "Запись") {
                 imageSendMessage.visibility = View.GONE
@@ -94,7 +110,7 @@ class MessageFragment() : Fragment() {
                 imageVoiceMessage.visibility = View.GONE
                 emojiImage.visibility = View.VISIBLE
             }
-        }
+        })
         imagePhotoMessage.setOnClickListener {
             mGetContent.launch("image/*")
         }
